@@ -12,19 +12,19 @@ const modals = () => {
                     e.preventDefault();
                 }
 
-                modalElement.classList.add('--active');
+                modalElement.classList.add('open_modal');
                 document.body.style.overflow = 'hidden';
             });
         })
 
         modalCloseButton.addEventListener('click', () => {
-            modalElement.classList.remove('--active');
+            modalElement.classList.remove('open_modal');
             document.body.style.overflow = 'auto';
         });
 
         modalElement.addEventListener('click', (e) => {
             if (!e.target.closest('.popup_content')) {
-                modalElement.classList.remove('--active');
+                modalElement.classList.remove('open_modal');
                 document.body.style.overflow = 'auto';
             }
         })
@@ -32,14 +32,14 @@ const modals = () => {
 
     function showModalByTime(modal, time) {
         setTimeout(() => {
-            document.querySelector(modal).classList.add('--active');
+            document.querySelector(modal).classList.add('open_modal');
              document.body.style.overflow = 'hidden';
         }, time);
     }
 
     toggleModal('.popup_engineer_btn', '.popup_engineer');
     toggleModal('.phone_link', '.popup');
-    showModalByTime('.popup', 6000);
+    // showModalByTime('.popup', 60000);
 };
 
 export default modals;

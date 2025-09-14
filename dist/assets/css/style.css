@@ -390,6 +390,11 @@ textarea:focus {
   cursor: pointer;
 }
 
+.glazing_block.after_click a {
+  text-decoration: none;
+  color: #333333;
+}
+
 .glazing_cold {
   margin-top: 4rem;
   padding: 2.5rem 0;
@@ -534,7 +539,7 @@ textarea:focus {
   border-top: 1rem solid #f7f7f7;
 }
 
-.decoration_item .after_click {
+.decoration_item.after_click div {
   border-top: 1rem solid #0089cd;
   height: 8rem;
   padding: 2rem 0;
@@ -840,9 +845,9 @@ textarea:focus {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.popup.--active,
-.popup_engineer.--active,
-.popup_calc_end.--active {
+.popup.open_modal,
+.popup_engineer.open_modal,
+.popup_calc_end.open_modal {
   display: block;
 }
 

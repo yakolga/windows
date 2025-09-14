@@ -13771,32 +13771,71 @@ const modals = () => {
         if (e.target) {
           e.preventDefault();
         }
-        modalElement.classList.add('--active');
+        modalElement.classList.add('open_modal');
         document.body.style.overflow = 'hidden';
       });
     });
     modalCloseButton.addEventListener('click', () => {
-      modalElement.classList.remove('--active');
+      modalElement.classList.remove('open_modal');
       document.body.style.overflow = 'auto';
     });
     modalElement.addEventListener('click', e => {
       if (!e.target.closest('.popup_content')) {
-        modalElement.classList.remove('--active');
+        modalElement.classList.remove('open_modal');
         document.body.style.overflow = 'auto';
       }
     });
   }
   function showModalByTime(modal, time) {
     setTimeout(() => {
-      document.querySelector(modal).classList.add('--active');
+      document.querySelector(modal).classList.add('open_modal');
       document.body.style.overflow = 'hidden';
     }, time);
   }
   toggleModal('.popup_engineer_btn', '.popup_engineer');
   toggleModal('.phone_link', '.popup');
-  showModalByTime('.popup', 6000);
+  // showModalByTime('.popup', 60000);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modals);
+
+/***/ }),
+
+/***/ "./src/js/modules/tabs.js":
+/*!********************************!*\
+  !*** ./src/js/modules/tabs.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const tabs = () => {
+  function tabsInit(headerElement, triggerElement, content, activeClass) {
+    const header = document.querySelector(headerElement);
+    header.addEventListener('click', e => {
+      const target = e.target;
+      if (target.classList.contains(triggerElement) || target.closest(`.${triggerElement}`)) {
+        const targetName = target.closest(`.${triggerElement}`).getAttribute('data-target');
+        document.querySelectorAll(`.${triggerElement}`).forEach(elem => {
+          elem.classList.remove(activeClass);
+        });
+        target.closest(`.${triggerElement}`).classList.add(activeClass);
+        if (!targetName) return;
+        document.querySelectorAll(content).forEach(item => {
+          item.style.display = 'none';
+          if (item.classList.contains(targetName)) {
+            item.style.display = 'block';
+          }
+        });
+      }
+    });
+  }
+  tabsInit('.glazing_slider', 'glazing_block', '.glazing_content', 'after_click');
+  tabsInit('.decoration_slider', 'decoration_item', '.decoration_content__block', 'after_click');
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tabs);
 
 /***/ }),
 
@@ -13965,10 +14004,13 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
 /* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
+/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
   (0,_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])();
 });
 })();
 
