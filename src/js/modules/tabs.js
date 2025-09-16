@@ -1,5 +1,5 @@
 const tabs = () => {
-    function tabsInit(headerElement, triggerElement, content, activeClass) {
+    function tabsInit(headerElement, triggerElement, content, activeClass, displayType = 'block') {
         const header = document.querySelector(headerElement);
 
         header.addEventListener('click', (e) => {
@@ -20,7 +20,7 @@ const tabs = () => {
                     item.style.display = 'none';
 
                     if (item.classList.contains(targetName)) {
-                        item.style.display = 'block';
+                        item.style.display = displayType;
                     }
                 });
             }
@@ -29,6 +29,7 @@ const tabs = () => {
 
     tabsInit('.glazing_slider', 'glazing_block', '.glazing_content', 'after_click');
     tabsInit('.decoration_slider', 'decoration_item', '.decoration_content__block', 'after_click');
+    tabsInit('.balcon_icons', 'balcon_icons_img', '.big_img > img', 'do_image_more', 'inline');
 }
 
 export default tabs;

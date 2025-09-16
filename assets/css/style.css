@@ -847,7 +847,8 @@ textarea:focus {
 
 .popup.open_modal,
 .popup_engineer.open_modal,
-.popup_calc_end.open_modal {
+.popup_calc_end.open_modal,
+.popup_calc.open_modal {
   display: block;
 }
 
@@ -939,9 +940,12 @@ textarea:focus {
 }
 
 .popup_calc_content .big_img img {
-  display: none;
   margin-bottom: 3rem;
   width: 30rem;
+}
+
+.popup_calc_content .big_img img:not(:first-child) {
+  display: none;
 }
 
 .popup_calc_content #type1 {
