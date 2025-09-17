@@ -18,6 +18,19 @@ body {
   color: red;
 }
 
+.faded {
+  animation-name: faded;
+  animation-duration: 1.5s;
+}
+
+@keyframes faded {
+  from {
+    opacity: 0.1;
+  } to {
+    opacity: 1;
+  }
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -847,8 +860,7 @@ textarea:focus {
 
 .popup.open_modal,
 .popup_engineer.open_modal,
-.popup_calc_end.open_modal,
-.popup_calc.open_modal {
+.popup_calc_end.open_modal {
   display: block;
 }
 
@@ -940,12 +952,9 @@ textarea:focus {
 }
 
 .popup_calc_content .big_img img {
+  display: none;
   margin-bottom: 3rem;
   width: 30rem;
-}
-
-.popup_calc_content .big_img img:not(:first-child) {
-  display: none;
 }
 
 .popup_calc_content #type1 {
